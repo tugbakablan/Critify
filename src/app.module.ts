@@ -7,6 +7,7 @@ import {
   AppConfiguration,
   DatabaseConfiguration,
   JwtConfiguration,
+  PaymentConfiguration,
   StorageConfiguration,
 } from './domain/settings';
 import { PersistenceModule } from './infrastructure/persistence/persistence.module';
@@ -15,7 +16,13 @@ import { PersistenceModule } from './infrastructure/persistence/persistence.modu
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [AppConfiguration, DatabaseConfiguration, JwtConfiguration, StorageConfiguration],
+      load: [
+        AppConfiguration,
+        DatabaseConfiguration,
+        JwtConfiguration,
+        StorageConfiguration,
+        PaymentConfiguration,
+      ],
     }),
     PersistenceModule,
     ApiModule,
