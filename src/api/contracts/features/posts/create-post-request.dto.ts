@@ -1,10 +1,15 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { IsOptional, IsString, IsUUID, MaxLength } from 'class-validator';
 
 export class CreatePostRequestDto {
-  @ApiProperty({ example: 'Bugün ilk paylaşımımı yapıyorum!', maxLength: 2000 })
+  @ApiPropertyOptional({ example: 'Bugün ilk paylaşımımı yapıyorum!', maxLength: 2000 })
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
   @MaxLength(2000)
-  body: string;
+  body?: string;
+
+  @ApiPropertyOptional({ description: 'POST /media cevabındaki id' })
+  @IsOptional()
+  @IsUUID()
+  mediaId?: string;
 }

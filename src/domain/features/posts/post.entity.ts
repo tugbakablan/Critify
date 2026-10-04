@@ -8,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { MediaEntity } from '../media/media.entity';
 import { UserEntity } from '../users/user.entity';
 
 @Entity('posts')
@@ -24,6 +25,14 @@ export class PostEntity {
 
   @Column({ type: 'varchar', length: 2000 })
   body: string;
+
+  @Index('IDX_posts_media_id', { unique: true })
+  @Column({ name: 'media_id', type: 'uuid', nullable: true })
+  mediaId: string | null;
+
+  @ManyToOne(() => MediaEntity, { nullable: true, onDelete: 'SET NULL' })
+  @JoinColumn({ name: 'media_id', foreignKeyConstraintName: 'FK_posts_media' })
+  media: MediaEntity | null;
 
   @Column({ name: 'comment_count', type: 'int', default: 0 })
   commentCount: number;

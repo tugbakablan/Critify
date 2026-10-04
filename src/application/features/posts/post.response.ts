@@ -16,6 +16,9 @@ export class PostResponse {
   @ApiProperty()
   body: string;
 
+  @ApiProperty({ nullable: true, type: String, description: 'Fotoğraf varsa 1 saat geçerli adres' })
+  imageUrl: string | null;
+
   @ApiProperty({ type: PostAuthorResponse })
   author: PostAuthorResponse;
 
@@ -25,10 +28,11 @@ export class PostResponse {
   @ApiProperty()
   createdAt: Date;
 
-  static create(post: PostEntity): PostResponse {
+  static create(post: PostEntity, imageUrl: string | null): PostResponse {
     const response = new PostResponse();
     response.id = post.id;
     response.body = post.body;
+    response.imageUrl = imageUrl;
     response.author = { id: post.author.id, displayName: post.author.displayName };
     response.commentCount = post.commentCount;
     response.createdAt = post.createdAt;

@@ -47,14 +47,14 @@ export class PostsController {
   ) {}
 
   @Post()
-  @ApiOperation({ summary: 'Yeni paylaşım' })
+  @ApiOperation({ summary: 'Yeni paylaşım (metin, fotoğraf ya da ikisi)' })
   @ApiCreatedResponse({ type: PostResponse })
   create(
     @AuthUser() user: AuthenticatedUserModel,
     @Body() body: CreatePostRequestDto,
   ): Promise<PostResponse> {
     return this.commandBus.execute<CreatePostCommand, PostResponse>(
-      new CreatePostCommand(user.id, body.body),
+      new CreatePostCommand(user.id, body.body, body.mediaId),
     );
   }
 
