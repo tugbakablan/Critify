@@ -1,14 +1,16 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TerminusModule } from '@nestjs/terminus';
+import { PostsModule } from '../application/features/posts/posts.module';
 import { UsersModule } from '../application/features/users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthController } from './controllers/auth.controller';
 import { HealthController } from './controllers/health.controller';
 import { MeController } from './controllers/me.controller';
+import { PostsController } from './controllers/posts.controller';
 
 @Module({
-  imports: [CqrsModule, TerminusModule, AuthModule, UsersModule],
-  controllers: [HealthController, AuthController, MeController],
+  imports: [CqrsModule, TerminusModule, AuthModule, UsersModule, PostsModule],
+  controllers: [HealthController, AuthController, MeController, PostsController],
 })
 export class ApiModule {}
