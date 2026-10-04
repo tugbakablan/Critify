@@ -7,7 +7,7 @@ import { AppConfig } from './domain/settings';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Bütün endpoint'ler /api/v1 altında (forphy ile aynı)
+  // Bütün endpoint'ler /api/v1 altında
   app.setGlobalPrefix('api/v1');
   setupSwagger(app);
 

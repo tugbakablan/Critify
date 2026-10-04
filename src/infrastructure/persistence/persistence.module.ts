@@ -5,7 +5,6 @@ import { DatabaseConfig } from '../../domain/settings';
 
 /**
  * Veritabanı bağlantısı. Bağlantı bilgileri DatabaseConfig'ten (.env → DB_*) gelir.
- * forphy karşılığı: src/infrastructure/persistence/persistence.module.ts
  */
 @Module({
   imports: [
@@ -23,7 +22,7 @@ import { DatabaseConfig } from '../../domain/settings';
           database: db.database,
           // Entity'ler (tablolar) Faz 1'de gelecek. forFeature ile kaydedilenler otomatik eklenir.
           autoLoadEntities: true,
-          // Şema asla otomatik değişmez; değişiklikler migration ile yapılır (forphy ile aynı).
+          // Şema asla otomatik değişmez; değişiklikler migration ile yapılır.
           synchronize: false,
         };
       },
