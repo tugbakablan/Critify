@@ -6,6 +6,7 @@ export function setupSwagger(app: INestApplication): void {
     .setTitle('Critify API')
     .setDescription('Paylaşım, yorum ve paketli kaydetme')
     .setVersion('0.1')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
