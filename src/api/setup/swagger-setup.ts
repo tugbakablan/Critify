@@ -1,10 +1,6 @@
 import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-/**
- * API dokümanını http://localhost:<port>/docs adresinde yayınlar.
- * forphy karşılığı: src/api/setup/swagger-setup.ts
- */
 export function setupSwagger(app: INestApplication): void {
   const config = new DocumentBuilder()
     .setTitle('Critify API')
